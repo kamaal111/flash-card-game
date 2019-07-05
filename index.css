@@ -22,3 +22,7 @@ button {
 
   /* align-: center; */
 }
+
+#newCardForm {
+  visibility: hidden;
+}

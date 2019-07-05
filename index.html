@@ -17,11 +17,26 @@
     <section id="showImage">
       <h2>Guess where this landmark is located?</h2>
     </section>
-    <!-- <div id="landmarkCard"></div> -->
+
     <a href="#" onclick="showAnswer(); return false">
       <div id="landmarkCard"></div>
     </a>
     <button onclick="showNextCard(); return false">Next Image</button>
+    <br />
+    <input type="checkbox" name="userFlashCards" id="userFlashCards" />
+    <label for="userFlashCards">Fancy adding your own flashcards?</label>
+
+    <form id="newCardForm">
+      <label for="imageUrl">Image Url</label>
+      <input type="url" name="image" id="imageInput" />
+      <br />
+      <label for="answer">Answer</label>
+      <input type="text" id="answerInput" />
+      <br />
+      <button type="submit" onclick="saveNewData(); return false">
+        Submit
+      </button>
+    </form>
     <script src="index.js"></script>
   </body>
 </html>
