@@ -1,30 +1,30 @@
 let landmark = [
   {
-    img: './Landmarks/EiffelTower.jpg',
-    location: 'Paris, France'
+    img: "./Landmarks/EiffelTower.jpg",
+    location: "Paris, France"
   },
   {
-    img: './Landmarks/BigBen.jpg',
-    location: 'London, Great Britain'
+    img: "./Landmarks/BigBen.jpg",
+    location: "London, Great Britain"
   },
   {
-    img: './Landmarks/greatWall.jpg',
-    location: 'Beijing, China'
+    img: "./Landmarks/greatWall.jpg",
+    location: "Beijing, China"
   },
   {
-    img: './Landmarks/TajMahal.jpeg',
-    location: 'Agra, India'
+    img: "./Landmarks/TajMahal.jpeg",
+    location: "Agra, India"
   },
   {
-    img: './Landmarks/pyramids.jpg',
-    location: 'Giza, Egpyt'
+    img: "./Landmarks/pyramids.jpg",
+    location: "Giza, Egpyt"
   }
 ];
 
 let randVal;
-const cardDiv = document.getElementById('landmarkCard');
-const userFlashCardsCheckbox = document.getElementById('userFlashCards');
-const newCardForm = document.getElementById('newCardForm');
+const cardDiv = document.getElementById("landmarkCard");
+const userFlashCardsCheckbox = document.getElementById("userFlashCards");
+const newCardForm = document.getElementById("newCardForm");
 
 // function from MDN to get a random value from 0 to max-1
 function getRandomInt(max) {
@@ -39,20 +39,20 @@ function showImage() {
   randVal = getRandomInt(landmark.length);
 
   //show landmark[randVal].img
-  const newImage = document.createElement('img');
+  const newImage = document.createElement("img");
   newImage.src = landmark[randVal].img;
   newImage.id = randVal;
   cardDiv.appendChild(newImage);
-  console.log('added');
+  console.log("added");
 }
 
 //show answer when user clicks on the image
 function showAnswer() {
   removeImage();
   const answer = landmark[randVal].location;
-  const answerText = document.createElement('h3');
+  const answerText = document.createElement("h3");
   answerText.innerText = answer;
-  answerText.id = 'answerText';
+  answerText.id = "answerText";
 
   cardDiv.appendChild(answerText);
 }
@@ -62,13 +62,13 @@ function removeImage() {
   const image = document.getElementById(randVal);
   if (image) {
     image.parentNode.removeChild(image);
-    console.log('removed');
+    console.log("removed");
   }
 }
 
 //show next flash card/landmark
 function showNextCard() {
-  const childNode = document.getElementById('answerText');
+  const childNode = document.getElementById("answerText");
   if (childNode) {
     cardDiv.removeChild(childNode);
     showImage();
@@ -78,16 +78,27 @@ function showNextCard() {
   }
 }
 
-userFlashCardsCheckbox.addEventListener('click', function(e) {
+userFlashCardsCheckbox.addEventListener("click", function(e) {
   console.log(userFlashCardsCheckbox.checked);
 
   if (userFlashCardsCheckbox.checked) {
-    newCardForm.style.visibility = 'visible';
+    newCardForm.style.visibility = "visible";
   } else {
-    newCardForm.style.visibility = 'hidden';
+    newCardForm.style.visibility = "hidden";
   }
 });
 
-newCardFormSubmit.addEventListener;
+//newCardFormSubmit.addEventListener;
+
+function saveNewData() {
+  const url = document.getElementById("imageInput").value;
+  const answer = document.getElementById("answerInput").value;
+  const newObject = {
+    img: url,
+    location: answer
+  };
+  landmark.push(newObject);
+  console.log(landmark);
+}
 
 showImage();
